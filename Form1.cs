@@ -15,7 +15,7 @@ namespace LijalaShrestha_ADCoursework_L3C3
     {
         private bool status = false;
         private int row = 0;
-        string filepath;
+       
 
         public Form1()
         {
@@ -93,32 +93,50 @@ namespace LijalaShrestha_ADCoursework_L3C3
         //imports CSV file and displays in the first datagridview
         private void importButton_Click(object sender, EventArgs e)
         {
-            
-            try
             {
-                //using Microsoft.VisualBasic.FileIO;
-                TextFieldParser csvreader = new TextFieldParser(filepath);
-
-                //set delimiter for the reader to specific value(,)
-                csvreader.SetDelimiters(new string[] { "," });
-
-                while (!csvreader.EndOfData)
+                int j = 0;
+                String filepath = importFileTextBox.Text;
+                try
                 {
-                    string[] fielddata = csvreader.ReadFields(); //reads all the field of current line
 
-                    for (int i = 0; i < fielddata.Length; i++)
+                    if (importFileTextBox.Text != "" && importFileTextBox.Text != null)
                     {
-                        Console.Write(fielddata[i] + "\t");
+                        TextFieldParser csvreader = new TextFieldParser(filepath);
+                        csvreader.SetDelimiters(new string[] 
+                        { 
+                            ","
+                        });
+                        csvreader.HasFieldsEnclosedInQuotes = true;
+                        csvreader.ReadFields();
+
+                        while (!csvreader.EndOfData)
+                        {
+                            string[] fielddata = csvreader.ReadFields();
+                            addItemDataGridView.Rows.Add();
+
+                            for (int i = 0; i < fielddata.Length; i++)
+                            {
+                                addItemDataGridView.Rows[j].Cells[i].Value = fielddata[i];
+                            }
+                            Console.WriteLine("");
+                            j += 1;
+                        }
+                       
+                        MessageBox.Show("File imported successfully!");
+
                     }
+                    else
+                    {
+                        MessageBox.Show("Enter the .csv file");
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("Please import .csv file.");
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Import CSV File", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            Console.WriteLine("");
-
+          
         }
 
         //displays selected row from the first datagridview in the textboxes of "Billing Details"
@@ -142,14 +160,16 @@ namespace LijalaShrestha_ADCoursework_L3C3
                 int billingQuantity = Convert.ToInt32(quantityBillingTextBox.Text);
                 if (billingItem != null && billingItem != "" && billingCategory != null && billingQuantity > 0)
                 {
-                    billingDataGridView.Rows.Add();
-                    billingDataGridView.Rows[this.row].Cells[0].Value = billingItem;
-                    billingDataGridView.Rows[this.row].Cells[1].Value = billingCategory;
-                    billingDataGridView.Rows[this.row].Cells[2].Value = billingQuantity;
-                    billingDataGridView.Rows[this.row].Selected = true;
-
+                    for (int i = 1; i <= billingQuantity; i++)
+                    {
+                        int count = billingDataGridView.Rows.Add();
+                        billingDataGridView.Rows[count].Cells[0].Value = billingItem;
+                        billingDataGridView.Rows[count].Cells[1].Value = billingCategory;
+                        billingDataGridView.Rows[count].Cells[2].Value = billingQuantity;
+                        billingDataGridView.Rows[count].Selected = true;
+                    }
                     MessageBox.Show("Item has been added!");
-                    row++;
+                    
 
                 }
                 else
