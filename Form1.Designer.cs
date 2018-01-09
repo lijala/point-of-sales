@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.billingRectangleShape = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
@@ -46,9 +46,9 @@
             this.removeButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.addItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importFileLabel = new System.Windows.Forms.Label();
             this.importFileTextBox = new System.Windows.Forms.TextBox();
             this.clearButton = new System.Windows.Forms.Button();
@@ -61,19 +61,22 @@
             this.quantityBillingTextBox = new System.Windows.Forms.TextBox();
             this.addToSalesButton = new System.Windows.Forms.Button();
             this.billingDataGridView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoldItemColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoldCategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoldPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportLabel = new System.Windows.Forms.Label();
             this.browseButton = new System.Windows.Forms.Button();
             this.sortByPriceRadioButton = new System.Windows.Forms.RadioButton();
             this.sortByNameRadioButton = new System.Windows.Forms.RadioButton();
             this.sortByLabel = new System.Windows.Forms.Label();
-            this.reportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.itemCategoryBillingTextBox = new System.Windows.Forms.TextBox();
+            this.SortButton = new System.Windows.Forms.Button();
+            this.clearBillingButton = new System.Windows.Forms.Button();
+            this.removeBillingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.addItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.billingDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).BeginInit();
             this.SuspendLayout();
             // 
             // shapeContainer1
@@ -216,9 +219,9 @@
             this.addItemDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.addItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.addItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Item,
-            this.Category,
-            this.Price});
+            this.ItemColumn,
+            this.CategoryColumn,
+            this.PriceColumn});
             this.addItemDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.addItemDataGridView.Location = new System.Drawing.Point(11, 242);
             this.addItemDataGridView.MultiSelect = false;
@@ -228,20 +231,20 @@
             this.addItemDataGridView.TabIndex = 11;
             this.addItemDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.addItemDataGridView_CellClick);
             // 
-            // Item
+            // ItemColumn
             // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
+            this.ItemColumn.HeaderText = "Item";
+            this.ItemColumn.Name = "ItemColumn";
             // 
-            // Category
+            // CategoryColumn
             // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
+            this.CategoryColumn.HeaderText = "Category";
+            this.CategoryColumn.Name = "CategoryColumn";
             // 
-            // Price
+            // PriceColumn
             // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
+            this.PriceColumn.HeaderText = "Price";
+            this.PriceColumn.Name = "PriceColumn";
             // 
             // importFileLabel
             // 
@@ -335,9 +338,9 @@
             // addToSalesButton
             // 
             this.addToSalesButton.BackColor = System.Drawing.SystemColors.Control;
-            this.addToSalesButton.Location = new System.Drawing.Point(521, 189);
+            this.addToSalesButton.Location = new System.Drawing.Point(490, 203);
             this.addToSalesButton.Name = "addToSalesButton";
-            this.addToSalesButton.Size = new System.Drawing.Size(94, 23);
+            this.addToSalesButton.Size = new System.Drawing.Size(106, 23);
             this.addToSalesButton.TabIndex = 24;
             this.addToSalesButton.Text = "ADD TO SALES";
             this.addToSalesButton.UseVisualStyleBackColor = false;
@@ -352,37 +355,44 @@
             this.billingDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.billingDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.billingDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
+            this.SoldItemColumn,
+            this.SoldCategoryColumn,
+            this.SoldPriceColumn});
+            this.billingDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.billingDataGridView.Location = new System.Drawing.Point(359, 242);
+            this.billingDataGridView.MultiSelect = false;
             this.billingDataGridView.Name = "billingDataGridView";
+            this.billingDataGridView.ReadOnly = true;
+            this.billingDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.billingDataGridView.Size = new System.Drawing.Size(336, 250);
             this.billingDataGridView.TabIndex = 25;
             // 
-            // Column1
+            // SoldItemColumn
             // 
-            this.Column1.HeaderText = "Sale Item";
-            this.Column1.Name = "Column1";
+            this.SoldItemColumn.HeaderText = "Sale Item";
+            this.SoldItemColumn.Name = "SoldItemColumn";
+            this.SoldItemColumn.ReadOnly = true;
             // 
-            // Column2
+            // SoldCategoryColumn
             // 
-            this.Column2.HeaderText = "Category";
-            this.Column2.Name = "Column2";
+            this.SoldCategoryColumn.HeaderText = "Category";
+            this.SoldCategoryColumn.Name = "SoldCategoryColumn";
+            this.SoldCategoryColumn.ReadOnly = true;
             // 
-            // Column3
+            // SoldPriceColumn
             // 
-            this.Column3.HeaderText = "Price";
-            this.Column3.Name = "Column3";
+            this.SoldPriceColumn.HeaderText = "Price";
+            this.SoldPriceColumn.Name = "SoldPriceColumn";
+            this.SoldPriceColumn.ReadOnly = true;
             // 
             // reportLabel
             // 
             this.reportLabel.AutoSize = true;
             this.reportLabel.Location = new System.Drawing.Point(840, 19);
             this.reportLabel.Name = "reportLabel";
-            this.reportLabel.Size = new System.Drawing.Size(52, 13);
+            this.reportLabel.Size = new System.Drawing.Size(89, 13);
             this.reportLabel.TabIndex = 26;
-            this.reportLabel.Text = "REPORT";
+            this.reportLabel.Text = "SALES REPORT";
             // 
             // browseButton
             // 
@@ -409,7 +419,7 @@
             // sortByNameRadioButton
             // 
             this.sortByNameRadioButton.AutoSize = true;
-            this.sortByNameRadioButton.Location = new System.Drawing.Point(225, 215);
+            this.sortByNameRadioButton.Location = new System.Drawing.Point(173, 215);
             this.sortByNameRadioButton.Name = "sortByNameRadioButton";
             this.sortByNameRadioButton.Size = new System.Drawing.Size(56, 17);
             this.sortByNameRadioButton.TabIndex = 29;
@@ -426,22 +436,22 @@
             this.sortByLabel.TabIndex = 30;
             this.sortByLabel.Text = "SORT BY";
             // 
-            // reportChart
+            // ReportChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.reportChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.reportChart.Legends.Add(legend4);
-            this.reportChart.Location = new System.Drawing.Point(707, 52);
-            this.reportChart.Name = "reportChart";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.reportChart.Series.Add(series4);
-            this.reportChart.Size = new System.Drawing.Size(307, 440);
-            this.reportChart.TabIndex = 31;
-            this.reportChart.Text = "Report";
+            chartArea2.Name = "ChartArea1";
+            this.ReportChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.ReportChart.Legends.Add(legend2);
+            this.ReportChart.Location = new System.Drawing.Point(707, 52);
+            this.ReportChart.Name = "ReportChart";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "BillingSeries";
+            this.ReportChart.Series.Add(series2);
+            this.ReportChart.Size = new System.Drawing.Size(307, 440);
+            this.ReportChart.TabIndex = 31;
+            this.ReportChart.Text = "Sales Report";
             // 
             // itemCategoryBillingTextBox
             // 
@@ -452,14 +462,50 @@
             this.itemCategoryBillingTextBox.TabIndex = 32;
             this.itemCategoryBillingTextBox.Text = " ";
             // 
+            // SortButton
+            // 
+            this.SortButton.BackColor = System.Drawing.SystemColors.Control;
+            this.SortButton.Location = new System.Drawing.Point(248, 212);
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(71, 23);
+            this.SortButton.TabIndex = 33;
+            this.SortButton.Text = "SORT";
+            this.SortButton.UseVisualStyleBackColor = false;
+            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
+            // 
+            // clearBillingButton
+            // 
+            this.clearBillingButton.BackColor = System.Drawing.SystemColors.Control;
+            this.clearBillingButton.Location = new System.Drawing.Point(465, 174);
+            this.clearBillingButton.Name = "clearBillingButton";
+            this.clearBillingButton.Size = new System.Drawing.Size(62, 23);
+            this.clearBillingButton.TabIndex = 34;
+            this.clearBillingButton.Text = "CLEAR";
+            this.clearBillingButton.UseVisualStyleBackColor = false;
+            this.clearBillingButton.Click += new System.EventHandler(this.clearBillingButton_Click);
+            // 
+            // removeBillingButton
+            // 
+            this.removeBillingButton.BackColor = System.Drawing.SystemColors.Control;
+            this.removeBillingButton.Location = new System.Drawing.Point(545, 174);
+            this.removeBillingButton.Name = "removeBillingButton";
+            this.removeBillingButton.Size = new System.Drawing.Size(70, 23);
+            this.removeBillingButton.TabIndex = 35;
+            this.removeBillingButton.Text = "REMOVE";
+            this.removeBillingButton.UseVisualStyleBackColor = false;
+            this.removeBillingButton.Click += new System.EventHandler(this.removeBillingButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1025, 504);
+            this.Controls.Add(this.removeBillingButton);
+            this.Controls.Add(this.clearBillingButton);
+            this.Controls.Add(this.SortButton);
             this.Controls.Add(this.itemCategoryBillingTextBox);
-            this.Controls.Add(this.reportChart);
+            this.Controls.Add(this.ReportChart);
             this.Controls.Add(this.sortByLabel);
             this.Controls.Add(this.sortByNameRadioButton);
             this.Controls.Add(this.sortByPriceRadioButton);
@@ -495,7 +541,7 @@
             this.Text = "RESTAURANT POINT-OF-SALE SYSTEM";
             ((System.ComponentModel.ISupportInitialize)(this.addItemDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.billingDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,9 +562,6 @@
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.DataGridView addItemDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.Label importFileLabel;
         private System.Windows.Forms.TextBox importFileTextBox;
         private System.Windows.Forms.Button clearButton;
@@ -538,11 +581,17 @@
         private System.Windows.Forms.RadioButton sortByPriceRadioButton;
         private System.Windows.Forms.RadioButton sortByNameRadioButton;
         private System.Windows.Forms.Label sortByLabel;
-        private System.Windows.Forms.DataVisualization.Charting.Chart reportChart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.TextBox itemCategoryBillingTextBox;
+        private System.Windows.Forms.Button SortButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;
+        internal System.Windows.Forms.DataVisualization.Charting.Chart ReportChart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoldItemColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoldCategoryColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoldPriceColumn;
+        private System.Windows.Forms.Button clearBillingButton;
+        private System.Windows.Forms.Button removeBillingButton;
     }
 }
 
