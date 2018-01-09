@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.billingRectangleShape = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
@@ -226,6 +226,7 @@
             this.addItemDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.addItemDataGridView.Size = new System.Drawing.Size(339, 250);
             this.addItemDataGridView.TabIndex = 11;
+            this.addItemDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.addItemDataGridView_CellClick);
             // 
             // Item
             // 
@@ -278,6 +279,7 @@
             this.importButton.TabIndex = 16;
             this.importButton.Text = "IMPORT";
             this.importButton.UseVisualStyleBackColor = false;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // billingLabel
             // 
@@ -301,6 +303,7 @@
             // 
             this.itemNameBillingTextBox.Location = new System.Drawing.Point(465, 52);
             this.itemNameBillingTextBox.Name = "itemNameBillingTextBox";
+            this.itemNameBillingTextBox.ReadOnly = true;
             this.itemNameBillingTextBox.Size = new System.Drawing.Size(150, 20);
             this.itemNameBillingTextBox.TabIndex = 19;
             // 
@@ -338,9 +341,14 @@
             this.addToSalesButton.TabIndex = 24;
             this.addToSalesButton.Text = "ADD TO SALES";
             this.addToSalesButton.UseVisualStyleBackColor = false;
+            this.addToSalesButton.Click += new System.EventHandler(this.addToSalesButton_Click);
             // 
             // billingDataGridView
             // 
+            this.billingDataGridView.AllowUserToAddRows = false;
+            this.billingDataGridView.AllowUserToDeleteRows = false;
+            this.billingDataGridView.AllowUserToResizeColumns = false;
+            this.billingDataGridView.AllowUserToResizeRows = false;
             this.billingDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.billingDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.billingDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -385,6 +393,7 @@
             this.browseButton.TabIndex = 27;
             this.browseButton.Text = "BROWSE";
             this.browseButton.UseVisualStyleBackColor = false;
+            this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
             // 
             // sortByPriceRadioButton
             // 
@@ -419,17 +428,17 @@
             // 
             // reportChart
             // 
-            chartArea8.Name = "ChartArea1";
-            this.reportChart.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.reportChart.Legends.Add(legend8);
+            chartArea4.Name = "ChartArea1";
+            this.reportChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.reportChart.Legends.Add(legend4);
             this.reportChart.Location = new System.Drawing.Point(707, 52);
             this.reportChart.Name = "reportChart";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.reportChart.Series.Add(series8);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.reportChart.Series.Add(series4);
             this.reportChart.Size = new System.Drawing.Size(307, 440);
             this.reportChart.TabIndex = 31;
             this.reportChart.Text = "Report";
