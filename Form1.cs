@@ -12,6 +12,7 @@ namespace LijalaShrestha_ADCoursework_L3C3
 {
     public partial class Form1 : Form
     {
+        private bool status = false;
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace LijalaShrestha_ADCoursework_L3C3
             {
                 if (itemName != "" && itemPrice > 0)
                 {
-
+                    int a;
                 }
             }
         }
