@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.billingRectangleShape = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
@@ -194,6 +194,7 @@
             this.removeButton.TabIndex = 9;
             this.removeButton.Text = "REMOVE";
             this.removeButton.UseVisualStyleBackColor = false;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // addButton
             // 
@@ -208,14 +209,21 @@
             // 
             // addItemDataGridView
             // 
+            this.addItemDataGridView.AllowUserToAddRows = false;
+            this.addItemDataGridView.AllowUserToDeleteRows = false;
+            this.addItemDataGridView.AllowUserToResizeColumns = false;
+            this.addItemDataGridView.AllowUserToResizeRows = false;
             this.addItemDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.addItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.addItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Item,
             this.Category,
             this.Price});
+            this.addItemDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.addItemDataGridView.Location = new System.Drawing.Point(11, 242);
+            this.addItemDataGridView.MultiSelect = false;
             this.addItemDataGridView.Name = "addItemDataGridView";
+            this.addItemDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.addItemDataGridView.Size = new System.Drawing.Size(339, 250);
             this.addItemDataGridView.TabIndex = 11;
             // 
@@ -411,17 +419,17 @@
             // 
             // reportChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.reportChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.reportChart.Legends.Add(legend2);
+            chartArea8.Name = "ChartArea1";
+            this.reportChart.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.reportChart.Legends.Add(legend8);
             this.reportChart.Location = new System.Drawing.Point(707, 52);
             this.reportChart.Name = "reportChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.reportChart.Series.Add(series2);
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.reportChart.Series.Add(series8);
             this.reportChart.Size = new System.Drawing.Size(307, 440);
             this.reportChart.TabIndex = 31;
             this.reportChart.Text = "Report";
