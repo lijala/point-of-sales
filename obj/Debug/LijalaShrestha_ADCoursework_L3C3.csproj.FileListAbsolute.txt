@@ -1,0 +1,4 @@
+D:\C O L L E G E\ASSIGNMENTS\THIRD YEAR\Fifth Semester\Application Development\LijalaShrestha_ADCoursework_L3C3\LijalaShrestha_ADCoursework_L3C3\obj\Debug\LijalaShrestha_ADCoursework_L3C3.Form1.resources
+D:\C O L L E G E\ASSIGNMENTS\THIRD YEAR\Fifth Semester\Application Development\LijalaShrestha_ADCoursework_L3C3\LijalaShrestha_ADCoursework_L3C3\obj\Debug\LijalaShrestha_ADCoursework_L3C3.Properties.Resources.resources
+D:\C O L L E G E\ASSIGNMENTS\THIRD YEAR\Fifth Semester\Application Development\LijalaShrestha_ADCoursework_L3C3\LijalaShrestha_ADCoursework_L3C3\obj\Debug\LijalaShrestha_ADCoursework_L3C3.csproj.GenerateResource.Cache
+D:\C O L L E G E\ASSIGNMENTS\THIRD YEAR\Fifth Semester\Application Development\LijalaShrestha_ADCoursework_L3C3\LijalaShrestha_ADCoursework_L3C3\bin\Debug\LijalaShrestha_ADCoursework_L3C3.exe.config
