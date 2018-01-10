@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.billingRectangleShape = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
@@ -71,7 +71,7 @@
             this.sortByLabel = new System.Windows.Forms.Label();
             this.ReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.itemCategoryBillingTextBox = new System.Windows.Forms.TextBox();
-            this.SortButton = new System.Windows.Forms.Button();
+            this.sortButton = new System.Windows.Forms.Button();
             this.clearBillingButton = new System.Windows.Forms.Button();
             this.removeBillingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.addItemDataGridView)).BeginInit();
@@ -388,7 +388,7 @@
             // reportLabel
             // 
             this.reportLabel.AutoSize = true;
-            this.reportLabel.Location = new System.Drawing.Point(840, 19);
+            this.reportLabel.Location = new System.Drawing.Point(825, 19);
             this.reportLabel.Name = "reportLabel";
             this.reportLabel.Size = new System.Drawing.Size(89, 13);
             this.reportLabel.TabIndex = 26;
@@ -438,17 +438,17 @@
             // 
             // ReportChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.ReportChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.ReportChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.ReportChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.ReportChart.Legends.Add(legend1);
             this.ReportChart.Location = new System.Drawing.Point(707, 52);
             this.ReportChart.Name = "ReportChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "BillingSeries";
-            this.ReportChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "BillingSeries";
+            this.ReportChart.Series.Add(series1);
             this.ReportChart.Size = new System.Drawing.Size(307, 440);
             this.ReportChart.TabIndex = 31;
             this.ReportChart.Text = "Sales Report";
@@ -462,16 +462,16 @@
             this.itemCategoryBillingTextBox.TabIndex = 32;
             this.itemCategoryBillingTextBox.Text = " ";
             // 
-            // SortButton
+            // sortButton
             // 
-            this.SortButton.BackColor = System.Drawing.SystemColors.Control;
-            this.SortButton.Location = new System.Drawing.Point(248, 212);
-            this.SortButton.Name = "SortButton";
-            this.SortButton.Size = new System.Drawing.Size(71, 23);
-            this.SortButton.TabIndex = 33;
-            this.SortButton.Text = "SORT";
-            this.SortButton.UseVisualStyleBackColor = false;
-            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
+            this.sortButton.BackColor = System.Drawing.SystemColors.Control;
+            this.sortButton.Location = new System.Drawing.Point(248, 212);
+            this.sortButton.Name = "sortButton";
+            this.sortButton.Size = new System.Drawing.Size(71, 23);
+            this.sortButton.TabIndex = 33;
+            this.sortButton.Text = "SORT";
+            this.sortButton.UseVisualStyleBackColor = false;
+            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
             // clearBillingButton
             // 
@@ -503,7 +503,7 @@
             this.ClientSize = new System.Drawing.Size(1025, 504);
             this.Controls.Add(this.removeBillingButton);
             this.Controls.Add(this.clearBillingButton);
-            this.Controls.Add(this.SortButton);
+            this.Controls.Add(this.sortButton);
             this.Controls.Add(this.itemCategoryBillingTextBox);
             this.Controls.Add(this.ReportChart);
             this.Controls.Add(this.sortByLabel);
@@ -538,7 +538,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "RESTAURANT POINT-OF-SALE SYSTEM";
+            this.Text = "Lijala\'s Restaurant POINT-OF-SALE";
             ((System.ComponentModel.ISupportInitialize)(this.addItemDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.billingDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReportChart)).EndInit();
@@ -582,7 +582,7 @@
         private System.Windows.Forms.RadioButton sortByNameRadioButton;
         private System.Windows.Forms.Label sortByLabel;
         private System.Windows.Forms.TextBox itemCategoryBillingTextBox;
-        private System.Windows.Forms.Button SortButton;
+        private System.Windows.Forms.Button sortButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoryColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;

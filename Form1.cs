@@ -94,7 +94,6 @@ namespace LijalaShrestha_ADCoursework_L3C3
         //imports CSV file and displays in the first datagridview
         private void importButton_Click(object sender, EventArgs e)
         {
-            {
                 try
                 {
                     addItemDataGridView.Rows.Add();
@@ -104,7 +103,7 @@ namespace LijalaShrestha_ADCoursework_L3C3
                         csvceader.SetDelimiters(new string[] { "," });
                         while (!csvceader.EndOfData)
                         {
-                            int rowIndex = FindEmptyRow();
+                            int rowIndex = findEmptyRow();
 
                             string[] rowdata = csvceader.ReadFields();
                             addItemDataGridView.Rows.Add();
@@ -114,20 +113,19 @@ namespace LijalaShrestha_ADCoursework_L3C3
                                 addItemDataGridView.Rows[rowIndex].Cells[i].Value = (Object)rowdata[i];
                             }
                         }
-                        MessageBox.Show("Successfully Imported.");
+                        MessageBox.Show("File successfully imported!");
                     }
 
                     else MessageBox.Show("File location not specified.", "No Filepath selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
-                catch (Exception ex) {
+                catch (Exception ex) 
+                {
                     MessageBox.Show(ex.Message);
                 }
-
-             }             
-         }
-
+        }                        
+         
 
         //displays selected row from the first datagridview in the textboxes of "Billing Details"
         private void addItemDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -174,27 +172,25 @@ namespace LijalaShrestha_ADCoursework_L3C3
             }
             finally
             {
-                DisplayChart();
+                displayChart();
             }
         }
 
-        private void SortButton_Click(object sender, EventArgs e)
+        //sorts the first datagridview according to the item name or price as selected by the user
+        private void sortButton_Click(object sender, EventArgs e)
         {
             if (sortByPriceRadioButton.Checked == true)
             {
-                SortByPrice();
+                sortByPrice();
             }
             if (sortByNameRadioButton.Checked == true)
             {
-                SortByName();
+                sortByName();
             }
         }
-
-
-
-
+        
         //finds empty row to add
-        public int FindEmptyRow()
+        public int findEmptyRow()
         {
             int rows = addItemDataGridView.RowCount;
             int columns = addItemDataGridView.ColumnCount;
@@ -215,8 +211,8 @@ namespace LijalaShrestha_ADCoursework_L3C3
             return EmptyRow;
         }
 
-     
-        public void SortByName() {
+        //sorting the items in the first datagridview according to the item name
+        public void sortByName() {
             List<string> names = new List<string>();
 
             //getting every item names from table and storing it in a list
@@ -255,7 +251,8 @@ namespace LijalaShrestha_ADCoursework_L3C3
 
         }
 
-        public void SortByPrice() {
+        //sorting the item data of the first datagridview according to item price
+        public void sortByPrice() {
 
             List<double> prices = new List<double>();
 
@@ -293,7 +290,8 @@ namespace LijalaShrestha_ADCoursework_L3C3
             }
         }
 
-        public void DisplayChart() {
+        //piechart
+        public void displayChart() {
             ReportChart.Series["BillingSeries"].Points.Clear();
 
 
@@ -343,22 +341,23 @@ namespace LijalaShrestha_ADCoursework_L3C3
                 }
             }
 
-            Breakfast = GetSalesPrice(BreakfastList);
-            Snacks = GetSalesPrice(SnacksList);
-            ColdDrinks = GetSalesPrice(ColdDrinksList);
-            HotDrinks = GetSalesPrice(HotDrinksList);
-            Dessert = GetSalesPrice(DessertList);
+            Breakfast = getSalesPrice(BreakfastList);
+            Snacks = getSalesPrice(SnacksList);
+            ColdDrinks = getSalesPrice(ColdDrinksList);
+            HotDrinks = getSalesPrice(HotDrinksList);
+            Dessert = getSalesPrice(DessertList);
 
 
-            AddToChart(0, Breakfast, "Breakfast", Color.Red);
-            AddToChart(1, Snacks, "Snacks", Color.Yellow);     
-            AddToChart(2, ColdDrinks, "Cold Drinks", Color.Green);
-            AddToChart(3, HotDrinks, "Hot Drinks", Color.LightSkyBlue);
-            AddToChart(4, Dessert, "Desert", Color.Purple);
+            addToChart(0, Breakfast, "Breakfast", Color.Red);
+            addToChart(1, Snacks, "Snacks", Color.Yellow);
+            addToChart(2, ColdDrinks, "Cold Drinks", Color.Green);
+            addToChart(3, HotDrinks, "Hot Drinks", Color.LightSkyBlue);
+            addToChart(4, Dessert, "Desert", Color.Purple);
         
         }
 
-        public void AddToChart(int points, double totalSales, String category, Color color)
+        //adds the sold items to the piechart according to the given colour
+        public void addToChart(int points, double totalSales, String category, Color color)
         {
             Console.WriteLine(totalSales);
             ReportChart.Series["BillingSeries"].Points.Add(totalSales);
@@ -366,8 +365,9 @@ namespace LijalaShrestha_ADCoursework_L3C3
             ReportChart.Series["BillingSeries"].Points[points].LegendText = category;
             ReportChart.Series["BillingSeries"].Points[points].Label = Convert.ToString(totalSales);
         }
-       //i'll run the code see if you can find the error okay
-        public double GetSalesPrice(List<double> salesList) {
+       
+        //returns the item sales price
+        public double getSalesPrice(List<double> salesList) {
             double sales = 0;
             foreach (double price in salesList) {
                 sales = sales + price;
@@ -375,6 +375,7 @@ namespace LijalaShrestha_ADCoursework_L3C3
             return sales;
         }
 
+        //clears the item name, item category and quantity textboxes of the "Billing Details" section
         private void clearBillingButton_Click(object sender, EventArgs e)
         {
             itemNameBillingTextBox.Text = String.Empty;
@@ -382,6 +383,7 @@ namespace LijalaShrestha_ADCoursework_L3C3
             quantityBillingTextBox.Text = String.Empty;
         }
 
+        //removes the selected row of the second datagridview
         private void removeBillingButton_Click(object sender, EventArgs e)
         {
             int selectedRow = billingDataGridView.CurrentRow.Index;
